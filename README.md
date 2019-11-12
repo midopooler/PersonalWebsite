@@ -2,4 +2,4 @@
 portfolio
 
 
-![](Screenshot (39).png)
+![.](https://github.com/midopooler/PersonalWebsite/blob/master/Screenshot%20(39).png)

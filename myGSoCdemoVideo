@@ -1,0 +1,11 @@
+<html>
+<body>
+
+<script type="text/javascript">
+  window.onload = () => {
+    window.location = "";
+  }
+</script>
+
+</body>
+</html>

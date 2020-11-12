@@ -125,6 +125,10 @@ $(document).ready(function(){
     });
 
       $(document).ready(function() {
+
+	let location = window.location.href;
+	console.log(location);
+	if (location.substring(0,5) !== "https") {window.location.href = "https://pulkitmidha.com";}
           $('#mc_embed_signup').find('form').ajaxChimp();
       });   
 

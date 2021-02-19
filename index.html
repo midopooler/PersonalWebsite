@@ -9,6 +9,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EK89T7LRJ"></script>
 <script>
+  
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -18,6 +19,7 @@
     <link rel="shortcut icon" href="TemplateData/favicon1.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
+  
   <body class="dark">
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
@@ -35,11 +37,11 @@
     <script>
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/PulkitMobile portfolio.loader.js";
+      const loaderUrl = buildUrl + "/MobileBuild.loader.js";
       const config = {
-        dataUrl: buildUrl + "/PulkitMobile portfolio.data",
-        frameworkUrl: buildUrl + "/PulkitMobile portfolio.framework.js",
-        codeUrl: buildUrl + "/PulkitMobile portfolio.wasm",
+        dataUrl: buildUrl + "/MobileBuild.data",
+        frameworkUrl: buildUrl + "/MobileBuild.framework.js",
+        codeUrl: buildUrl + "/MobileBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "midopooler",
         productName: "Portfolio | Pulkit Midha | Immersive Tech Developer",
@@ -71,7 +73,7 @@
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-       <!-- config.devicePixelRatio = 1; -->
+       
       }
       loadingCover.style.display = "";
 

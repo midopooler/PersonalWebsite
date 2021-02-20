@@ -19,7 +19,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon1.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  
+  <script>
+    let widthWin = window.innerWidth;
+    if (widthWin < 1000) window.location.href = "https://m.pulkitmidha.com";
+  </script>
   <body class="dark">
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
@@ -37,11 +40,11 @@
     <script>
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/MobileBuild.loader.js";
+      const loaderUrl = buildUrl + "/PulkitMobileBuild.loader.js";
       const config = {
-        dataUrl: buildUrl + "/MobileBuild.data",
-        frameworkUrl: buildUrl + "/MobileBuild.framework.js",
-        codeUrl: buildUrl + "/MobileBuild.wasm",
+        dataUrl: buildUrl + "/PulkitMobileBuild.data",
+        frameworkUrl: buildUrl + "/PulkitMobileBuild.framework.js",
+        codeUrl: buildUrl + "/PulkitMobileBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "midopooler",
         productName: "Portfolio | Pulkit Midha | Immersive Tech Developer",
@@ -73,7 +76,7 @@
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-       
+        config.devicePixelRatio = 1;
       }
       loadingCover.style.display = "";
 

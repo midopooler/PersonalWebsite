@@ -1,39 +1,86 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-  
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>Portfolio | Pulkit Midha | Immersive Tech Developer</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EK89T7LRJ"></script>
-<script>
-  
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4EK89T7LRJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-4EK89T7LRJ');
-</script>
-    <link rel="shortcut icon" href="TemplateData/favicon1.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+      gtag("config", "G-4EK89T7LRJ");
+    </script>
+    <link rel="shortcut icon" href="TemplateData/favicon1.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
   </head>
-  
+  <style>
+    .full-screen-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #fff;
+      z-index: 99999;
+    }
+  </style>
+  <script>
+    const toggleFullScreen = () => {
+      var elem = document.documentElement;
+      function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          /* IE11 */
+          elem.msRequestFullscreen();
+        }
+      }
+      function closeFullscreen() {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
+      }
+      if (!document.fullscreenElement) openFullscreen();
+      else closeFullscreen();
+    };
+  </script>
+
   <body class="dark">
+    <div class="full-screen-btn" onclick="toggleFullScreen();">&times;</div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>
     </div>
-    <div id="loading-cover" style="display:none;">
+    <div id="loading-cover" style="display: none">
       <div id="unity-loading-bar">
-        <div id="unity-logo"><img src="logo.png"></div>
-        <div id="unity-progress-bar-empty" style="display: none;">
+        <div id="unity-logo"><img src="logo.png" /></div>
+        <div id="unity-progress-bar-empty" style="display: none">
           <div id="unity-progress-bar-full"></div>
         </div>
         <div class="spinner"></div>
       </div>
     </div>
-    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <div id="unity-fullscreen-button" style="display: none"></div>
     <script>
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
@@ -51,29 +98,34 @@
       const container = document.querySelector("#unity-container");
       const canvas = document.querySelector("#unity-canvas");
       const loadingCover = document.querySelector("#loading-cover");
-      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-      const progressBarFull = document.querySelector("#unity-progress-bar-full");
-      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      const spinner = document.querySelector('.spinner');
+      const progressBarEmpty = document.querySelector(
+        "#unity-progress-bar-empty"
+      );
+      const progressBarFull = document.querySelector(
+        "#unity-progress-bar-full"
+      );
+      const fullscreenButton = document.querySelector(
+        "#unity-fullscreen-button"
+      );
+      const spinner = document.querySelector(".spinner");
 
-      const canFullscreen = (function() {
+      const canFullscreen = (function () {
         for (const key of [
-            'exitFullscreen',
-            'webkitExitFullscreen',
-            'webkitCancelFullScreen',
-            'mozCancelFullScreen',
-            'msExitFullscreen',
-          ]) {
+          "exitFullscreen",
+          "webkitExitFullscreen",
+          "webkitCancelFullScreen",
+          "mozCancelFullScreen",
+          "msExitFullscreen",
+        ]) {
           if (key in document) {
             return true;
           }
         }
         return false;
-      }());
+      })();
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-       
       }
       loadingCover.style.display = "";
 
@@ -84,19 +136,21 @@
           spinner.style.display = "none";
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
-        }).then((unityInstance) => {
-          loadingCover.style.display = "none";
-          if (canFullscreen) {
-            if (!hideFullScreenButton) {
-              fullscreenButton.style.display = "";
+        })
+          .then((unityInstance) => {
+            loadingCover.style.display = "none";
+            if (canFullscreen) {
+              if (!hideFullScreenButton) {
+                fullscreenButton.style.display = "";
+              }
+              fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+              };
             }
-            fullscreenButton.onclick = () => {
-              unityInstance.SetFullscreen(1);
-            };
-          }
-        }).catch((message) => {
-          alert(message);
-        });
+          })
+          .catch((message) => {
+            alert(message);
+          });
       };
       document.body.appendChild(script);
     </script>

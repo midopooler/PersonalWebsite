@@ -50,7 +50,7 @@
           elem.msRequestFullscreen();
         }
         try {
-          screen.orientation.lock("portrait").catch((err) => null);
+          screen.orientation.lock("landscape").catch((err) => null);
         } catch (err) {
           null;
         }

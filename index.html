@@ -37,36 +37,41 @@
     }
   </style>
   <script>
-    const toggleFullScreen = async () => {
+    const toggleFullScreen = () => {
       var elem = document.documentElement;
       function openFullscreen() {
         if (elem.requestFullscreen) {
-          await elem.requestFullscreen();
+          elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {
           /* Safari */
-          await elem.webkitRequestFullscreen();
+          elem.webkitRequestFullscreen();
         } else if (elem.msRequestFullscreen) {
           /* IE11 */
-          await elem.msRequestFullscreen();
+          elem.msRequestFullscreen();
         }
         try {
-          await screen.orientation.lock("portrait");
+          screen.orientation.lock("portrait").catch((err) => null);
         } catch (err) {
           null;
         }
       }
       function closeFullscreen() {
         if (document.exitFullscreen) {
-          await document.exitFullscreen();
+          document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
           /* Safari */
-          await document.webkitExitFullscreen();
+          document.webkitExitFullscreen();
         } else if (document.msExitFullscreen) {
           /* IE11 */
-          await document.msExitFullscreen();
+          document.msExitFullscreen();
         }
         try {
-          await screen.orientation.unlock();
+          screen.orientation.unlock().catch((err) => null);
+        } catch (err) {
+          null;
+        }
+        try {
+          screen.orientation.unlock();
         } catch (err) {
           null;
         }

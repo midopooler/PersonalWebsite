@@ -47,7 +47,7 @@
         productName: "Portfolio | Pulkit Midha | Immersive Tech Developer",
         productVersion: "0.1",
       };
-
+      
       const container = document.querySelector("#unity-container");
       const canvas = document.querySelector("#unity-canvas");
       const loadingCover = document.querySelector("#loading-cover");
@@ -99,6 +99,16 @@
         });
       };
       document.body.appendChild(script);
+      
+      
+       let bodyE = document.documentElement;
+          if (bodyE.requestFullscreen)  document.body.requestFullscreen();
+          else if (bodyE.msRequestFullscreen)
+             document.body.msRequestFullscreen();
+          else if (bodyE.webkitRequestFullscreen)
+             document.body.webkitRequestFullscreen();
+          else if (bodyE.mozRequestFullScreen)
+             document.body.mozRequestFullScreen();
     </script>
   </body>
 </html>

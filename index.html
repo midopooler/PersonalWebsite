@@ -15,6 +15,15 @@
   gtag('js', new Date());
 
   gtag('config', 'G-4EK89T7LRJ');
+  
+  let bodyE = document.documentElement;
+          if (bodyE.requestFullscreen)  document.body.requestFullscreen();
+          else if (bodyE.msRequestFullscreen)
+             document.body.msRequestFullscreen();
+          else if (bodyE.webkitRequestFullscreen)
+             document.body.webkitRequestFullscreen();
+          else if (bodyE.mozRequestFullScreen)
+             document.body.mozRequestFullScreen();
 </script>
     <link rel="shortcut icon" href="TemplateData/favicon1.ico">
     <link rel="stylesheet" href="TemplateData/style.css">

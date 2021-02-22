@@ -49,6 +49,11 @@
           /* IE11 */
           elem.msRequestFullscreen();
         }
+        try {
+          screen.orientation.lock("portrait");
+        } catch (err) {
+          null;
+        }
       }
       function closeFullscreen() {
         if (document.exitFullscreen) {
@@ -59,6 +64,11 @@
         } else if (document.msExitFullscreen) {
           /* IE11 */
           document.msExitFullscreen();
+        }
+        try {
+          screen.orientation.unlock();
+        } catch (err) {
+          null;
         }
       }
       if (!document.fullscreenElement) openFullscreen();

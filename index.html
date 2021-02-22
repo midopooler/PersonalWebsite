@@ -37,17 +37,22 @@
     }
   </style>
   <script>
-    const toggleFullScreen = () => {
+    const toggleFullScreen = async () => {
       var elem = document.documentElement;
       function openFullscreen() {
         if (elem.requestFullscreen) {
-          elem.requestFullscreen();
+          await elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {
           /* Safari */
-          elem.webkitRequestFullscreen();
+          await elem.webkitRequestFullscreen();
         } else if (elem.msRequestFullscreen) {
           /* IE11 */
-          elem.msRequestFullscreen();
+          await elem.msRequestFullscreen();
+        }
+        try {
+          await screen.orientation.lock("portrait");
+        } catch (err) {
+          null;
         }
         try {
           screen.orientation.lock("portrait");
@@ -57,13 +62,18 @@
       }
       function closeFullscreen() {
         if (document.exitFullscreen) {
-          document.exitFullscreen();
+          await document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
           /* Safari */
-          document.webkitExitFullscreen();
+          await document.webkitExitFullscreen();
         } else if (document.msExitFullscreen) {
           /* IE11 */
-          document.msExitFullscreen();
+          await document.msExitFullscreen();
+        }
+        try {
+          await screen.orientation.unlock();
+        } catch (err) {
+          null;
         }
         try {
           screen.orientation.unlock();

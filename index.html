@@ -1,587 +1,104 @@
-	<!DOCTYPE html>
-	<html lang="zxx" class="no-js">
-	<head>
-		<!-- Mobile Specific Meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/fav.png">
-		<!-- Author Meta -->
-		<meta name="author" content="colorlib">
-		<!-- Meta Description -->
-		<meta name="description" content="">
-		<!-- Meta Keyword -->
-		<meta name="keywords" content="">
-		<!-- meta character set -->
-		<meta charset="UTF-8">
-		<!-- Site Title -->
-		<title>Pulkit's Personal Website</title>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Portfolio | Pulkit Midha | Immersive Tech Developer</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EK89T7LRJ"></script>
+<script>
+  
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
-			<!--
-			CSS
-			============================================= -->
-			<link rel="stylesheet" href="css/linearicons.css">
-			<link rel="stylesheet" href="css/font-awesome.min.css">
-			<link rel="stylesheet" href="css/bootstrap.css">
-			<link rel="stylesheet" href="css/magnific-popup.css">
-			<link rel="stylesheet" href="css/owl.carousel.css">
-			<link rel="stylesheet" href="css/main.css">
+  gtag('config', 'G-4EK89T7LRJ');
+</script>
+    <link rel="shortcut icon" href="TemplateData/favicon1.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  
+  <body class="dark">
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+    <div id="loading-cover" style="display:none;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="logo.png"></div>
+        <div id="unity-progress-bar-empty" style="display: none;">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <script>
+      const hideFullScreenButton = "1";
+      const buildUrl = "Build";
+      const loaderUrl = buildUrl + "/MobileBuild.loader.js";
+      const config = {
+        dataUrl: buildUrl + "/MobileBuild.data",
+        frameworkUrl: buildUrl + "/MobileBuild.framework.js",
+        codeUrl: buildUrl + "/MobileBuild.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "midopooler",
+        productName: "Portfolio | Pulkit Midha | Immersive Tech Developer",
+        productVersion: "0.1",
+      };
 
-<!--             	<script>
-			let location = window.location.href;
-			if (location.substring(0,5) !== "https") {window.location.href = "https://pulkitmidha.com";}
-		</script> -->
-		</head>
-		<body>
-			<!-- start banner Area -->
-			<section class="banner-area" id="home">
-				<!-- Start Header Area -->
-				<header class="default-header">
-					<nav class="navbar navbar-expand-lg  navbar-light">
-						<div class="container">
-							  <a class="navbar-brand" href="index.html">
-							  	<img src="#" alt="">
-							  </a>
-							  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							    <span class="text-white lnr lnr-menu"></span>
-							  </button>
+      const container = document.querySelector("#unity-container");
+      const canvas = document.querySelector("#unity-canvas");
+      const loadingCover = document.querySelector("#loading-cover");
+      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      const spinner = document.querySelector('.spinner');
 
-							  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-							    <ul class="navbar-nav">
-									<li><a href="#home">Home</a></li>
-									<li><a href="#service">Service</a></li>
-									<li><a href="#about">About</a></li>
-									<li><a href="#project">Projects</a></li>
-									<li><a href="#contact">Contact</a></li>
-								    <li><a href="https://pulkitmidha.com/Hackathons/">Hackathons</a></li>	
-								    
-							    </ul>
-							  </div>						
-						</div>
-					</nav>
-				</header>
-				<!-- End Header Area -->				
-			<div class="container">
-				<div class="row justify-content-start align-items-center">
+      const canFullscreen = (function() {
+        for (const key of [
+            'exitFullscreen',
+            'webkitExitFullscreen',
+            'webkitCancelFullScreen',
+            'mozCancelFullScreen',
+            'msExitFullscreen',
+          ]) {
+          if (key in document) {
+            return true;
+          }
+        }
+        return false;
+      }());
 
-					<style>
-					
-						@media screen and (max-width: 768px){
-							.img-fluid{
-								width: 25em !important;
-							}
-						}
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+       
+      }
+      loadingCover.style.display = "";
 
-					</style>
-
-					<div class="col-lg-6 col-md-12 no-padding banner-right">
-						<img class="img-fluid" src="img/header-img.png" alt="">
-					</div>						
-					<div class="col-lg-6 col-md-12 banner-left">
-						<h1 class="text-white">
-							<div>Hi, I’m </div>
-							<span>Pulkit Midha</span> <br>
-							Immersive Tech developer						
-						</h1>
-						<p class="mx-auto text-white  mt-20 mb-40">
-							
-						</p>
-						<!-- <a href="https://wa.me/+917011765309" class="text-uppercase header-btn">Let Us Talk</span></a> -->
-					</div>
-				</div>
-			</div>
-			</section>
-			<!-- End banner Area -->	
-			
-			<!-- Start service Area -->
-			<section class="service-area section-gap" id="service"> 
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Have a Look at my Skillsets</h1>
-								<p>Who are in extremely love with technology.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s1.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Augmented Reality</a></h4>			
-								<p class="mt-20">
-									Most skilled in this field. Have in-depth knowledge of vuforia SDK. Can create sick AR portals connecting two different locations. Has 1+ year of experience in Unity 3D. Also, have published a couple of AR filters on Snapchat and Facebook.
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s2.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Virtual Reality</a></h4>			
-								<p class="mt-20">
-									I can create virtual tours, and push them to android, web. Also had pretty good experience in integrating VR with an AR app. 
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s3.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">3D Modelling</a></h4>			
-								<p class="mt-20">
-									Quite beginner in this field and can design some basic 3D models on Blender and ProBuilder.
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s4.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Voice development</a></h4>			
-								<p class="mt-20">
-									Can develop basic voice apps on Alexa and google assistant. Knows the basics of frontend VUI and a bit of backend too.
-								</p>								
-							</div>
-						</div>																		
-					</div>
-				</div>	
-			</section>
-			<!-- End service Area -->
-			
-			<!-- Start about Area -->
-			<section class="about-area section-gap" id="about">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">About Myself</h1>
-								<p></p>
-							</div>
-						</div>
-					</div>					
-					<div class="row">
-                        <div class="col-lg-6 about-left">
-                            <p>
-                                <!--It won’t be a bigger problem to find one AR developer in your neighbor. Since the introduction of Immersive Tech, it has been achieving great heights so far as its popularity and technological advancement are concerned. The history of AR/VR is as interesting as a fairy tale.-->
-                            </p>
-                            <h4 class="pb-40">Skill Expertness</h4>
-
-                            <div class="skillbar" data-percent="85%">
-                                <div class="skill-bar-percent">Augmented Reality 85%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                            <div class="skillbar" data-percent="75%">
-                                <div class="skill-bar-percent">Unity 3D 75%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 75%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="skillbar" data-percent="80%">
-                                <div class="skill-bar-percent">Vuforia SDK 80%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 80%;"></div>
-                                </div>
-                            </div>
-				
-				<div class="skillbar" data-percent="70%">
-                                <div class="skill-bar-percent">ARfoundation 70%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 70%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="skillbar" data-percent="50%">
-                                <div class="skill-bar-percent">Google ARcore 50%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 50%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="skillbar" data-percent="60%">
-                                <div class="skill-bar-percent">SparkAR Studio 60%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 60%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="skillbar" data-percent="70%">
-                                <div class="skill-bar-percent">Lens Studio 70%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 70%;"></div>
-                                </div>
-                            </div>
-
-<div class="skillbar" data-percent="40%">
-                                <div class="skill-bar-percent">Wikitude SDK 40%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 40%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="skillbar" data-percent="40%">
-                                <div class="skill-bar-percent">Alexa 40%</div>
-                                <div class="skillwrap">
-                                    <div class="skillbar-bar" style="width: 40%;"></div>
-                                </div>
-                            </div>
-
-
-
-                        </div>
-						<div class="col-lg-6 about-right justify-content-end d-flex">
-							<div class="myself-wrap">
-								<img class="img-fluid" src="img/about-img.jpeg" alt="">
-								<div class="desc">
-									<h4>Pulkit Midha</h4>
-									<p class="pb-10">Immersive Tech Developer</p>
-									<!-- <p><span class="lnr lnr-phone"></span> +91 7011 765 309</p> -->
-									<p><span class="lnr lnr-envelope"></span> midhapulkit28@gmail.com</p>
-									<a class="mt-30 text-uppercase talk-btn" href="https://www.slideshare.net/slideshow/embed_code/key/ct9Mx5ZxHtjPkb">Hire Me</span></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End about Area -->
-			
-			<!-- Start qualification Area -->
-			<section class="qualification-area pt-100 pb-80">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-20 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">My Experiences</h1>
-								<p></p>
-							</div>
-						</div>
-					</div>							
-					<div class="row d-flex justify-content-center">
-						<div class="col-lg-6 col-md-6 qty-left">
-							<div class="single-qly">
-								<h3 class="text-uppercase">DarkHorse</h3>
-								<p>September 2020 to Present</p>
-								<h4 class="pt-20 pb-20">Augmented Reality Engineer</h4>
-								<p>
-									Hired here as an intern. My job is to simulate <br> football streams in tabletop AR.
-								</p>							
-							</div>
-							
-							<div class="btm-border d-block mx-auto"></div>								
-							<div class="single-qly">
-								<h3 class="text-uppercase">Homingos</h3>
-								<p>July 2020 to September 2020</p>
-								<h4 class="pt-20 pb-20">Unity Application developer</h4>
-								<p>
-									Worked on Homingos Magic AR app
-								</p>								
-							</div>							
-						</div>
-                        <div class="col-lg-6 col-md-6 qty-right">
-
-                            <div class="single-qly">
-                                <h3 class="text-uppercase">Unity technologies</h3>
-                                <p>December 2019 to Present</p>
-                                <h4 class="pt-20 pb-20">Student Ambassador</h4>
-                                <p>
-                                    My job here is to mentor students in my <br> college about the immersive technologies.
-                                </p>
-                            </div>
-
-
-				<div class="btm-border d-block mx-auto"></div>
-
-                            <div class="single-qly">
-                                <h3 class="text-uppercase">HitchAR</h3>
-                                <p>October 2019 to December 2019</p>
-                                <h4 class="pt-20 pb-20">Unity AR dev</h4>
-                                <p>
-                                    Developed Jashn-e-Rekhta's AR app and <br>Worked on AR FPS game .
-                                </p>
-                            </div>
-
-
-                            
-
-                        </div>						
-					</div>
-				</div>	
-			</section>
-			<!-- End qualification Area -->
-			
-			<!-- Start project Area -->
-			<section class="project-area section-gap" id="project">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Latest Done Projects</h1>
-								<p>Who are in extremely love with Augmented Reality.</p>
-							</div>
-						</div>
-					</div>					
-					<div class="row">
-						<div class="col-lg-6 project-left">
-							<div class="single-project pb-100">
-								<img class="img-fluid" src="img/Screenshot_Photos_20191110-003846-01 (1).jpeg" alt="">
-								<h4 class="pt-100 pb-30"><a href="#">ARcore Multiple Floor Navigation</a></h4>
-                                <p>
-                                    The only solution right now which navigates inside the different floors of the Pacific mall using Augmented Reality.<br> -> <a href="https://github.com/midopooler/Vee-aRe-Devs">Github Repo Link</a> <-
-                                </p>
-							</div>
-							<div class="single-project">
-								<img class="img-fluid" src="img/PicsArt_11-10-12.56.09 (2).png" alt="">
-								<h4 class="pt-100 pb-30"><a href="#">RBI app for blinds</a></h4>
-                                <p>
-                                    In this project, I developed an application which uses computer vision to detect the denomination of the Indian currency. Just put a note in front of the camera and it will speak the denomination amount of the note. <br> -> <a href="https://github.com/midopooler/RBI-app-for-blinds">Github Repo Link</a> <-
-
-                                </p>
-							</div>							
-						</div>
-						<!-- <div style="height: 100px;width: 100%;"> </div> -->
-						<div class="col-lg-6 project-right">
-							<div class="single-project pb-100">
-								<img class="img-fluid" src="img/PicsArt_11-10-12.49.14 (2).png" alt="">
-								<h4 class="pt-100 pb-30"><a href="#">AR business cards</a></h4>
-                                <p>
-									Designed a template of a business card which will triger various links while hovering over the different virtual buttons inside the business card. 
-                                </p>
-							</div>
-							<div class="single-project">
-								<img class="img-fluid" src="img/Screenshot_Photos_20191110-005052-01.jpeg" alt="">
-								<h4 class="pt-100 pb-30"><a href="#">ARcore portals</a></h4>
-                                <p>
-									Created a Dr. Strange like portal which connects two different locations of the world using the combination of AR and VR 360 video.
-                                </p>
-							</div>
-							<!-- <div class="single-project">
-								<img class="img-fluid" src="img/l2.jpg" alt="">
-								<h4 class="pt-30 pb-30"><a href="#">AR business cards</a></h4>
-								<p class=" pb-100">
-									Designed a template of a business card which will triger various links while hovering over the different virtual buttons inside the business card. 
-								</p>								
-							</div>
-							<div class="single-project">
-								<h4 class="pt-100 pb-30"><a href="#">ARcore portals</a></h4>
-								<p class=" pb-30">
-									Created a Dr. Strange like portal which connects two different locations of the world using the combination of AR and VR 360 video.
-								</p>
-								<img class="img-fluid" src="img/l4.jpg" alt="">								
-							</div>								 -->
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End project Area -->
-			
-			<!-- Start feature Area -->
-			<section class="feature-area pt-100">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Some Hobbies that Makes me Unique</h1>
-								<p></p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-                                <div class="title d-flex flex-row pb-20">
-                                    <!--<span class="lnr lnr-user"></span>-->
-                                    <a href="https://www.quora.com/profile/Pulkit-Midha-2"><i class="fa fa-quora"></i></a>
-                                    <h4><a href="">. Technical Writer on Quora</a></h4>
-                                </div>
-								<p>
-									Started reading quora since 2014 and started writing since 2017.<br> A Million Viewed Writer.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-                                <div class="title d-flex flex-row pb-20">
-                                    <span class="lnr lnr-license"></span>
-                                    <!--<a href="#"><i class="fa fa-maps"></i></a>-->
-                                    <h4><a href="https://www.google.com/maps/contrib/113034248141724664846/reviews/@28.4710886,76.9085468,10z/data=!3m1!4b1!4m3!8m2!3m1!1e1">Level 10 Google Local Guide</a></h4>
-                                </div>
-								<p>
-									Belongs to the Top 1% Guides in the world. <br> Million views here too.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-                                <div class="title d-flex flex-row pb-20">
-                                    <!--<span class="lnr lnr-phone"></span>-->
-                                    <a href="#"><i class="fa fa-medium"></i></a>
-                                    <h4><a href="https://medium.com/@midhapulkit28">. Technical Blogger on Medium</a></h4>
-                                </div>
-								<p>
-									I have published multiple blogs on the various topics like technology, game designs, and on android custom ROMs.
-								</p>							
-							</div>							
-						</div>
-						<!-- <div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-rocket"></span>
-									<h4><a href="#">Technical Skills</a></h4>
-								</div>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-diamond"></span>
-									<h4><a href="#">Highly Recomended</a></h4>
-								</div>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-bubble"></span>
-									<h4><a href="#">Positive Reviews</a></h4>
-								</div>
-								<p>
-									Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-								</p>							
-							</div>							
-						</div>																					 -->
-					</div>
-				</div>	
-			</section>
-			<!-- End feature Area -->
-							
-			<!-- start contact Area -->		
-			<section class="contact-area section-gap" id="contact">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-20 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">If you need, Just drop me a message</h1>
-								<p>That's not Instagram's Ask me anything. :p</p>
-							</div>
-						</div>
-					</div>										
-					<form class="form-area mt-60" id="myForm" action="mail.php" method="post" class="contact-form text-right">
-						<div class="row">	
-						<div class="col-lg-6 form-group">
-							<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-						
-							<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
-
-							<input name="subject" placeholder="Enter your subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control" required="" type="text">
-						</div>
-						<div class="col-lg-6 form-group">
-							<textarea class="common-textarea mt-10 form-control" name="message" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-							<button class="primary-btn mt-20">Send Message<span class="lnr lnr-arrow-right"></span></button>
-							<div class="alert-msg">								
-						</div>
-						</div></div>
-					</form>						
-					
-				</div>	
-			</section>
-			<!-- end contact Area -->		
-			
-			<!-- start footer Area -->		
-			<footer class="footer-area section-gap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-5  col-md-6 col-sm-6">
-							<div class="single-footer-widget">
-								<h6>About Me</h6>
-								<p>
-									
-								</p>
-								
-            		<p class="footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/midopooler/" target="_blank">Pulkit</a></p>
-            		
-							</div>
-						</div>
-						<div class="col-lg-5  col-md-6 col-sm-6">
-							<div class="single-footer-widget">
-								<h6>Newsletter</h6>
-								<p>Stay update with my latest</p>
-								<div class="" id="mc_embed_signup">
-
-										<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="form-inline">
-
-										<div class="d-flex flex-row">
-
-											<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '" required="" type="email">
-
-
-				                            	<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-				                            	<div style="position: absolute; left: -5000px;">
-													<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-												</div>
-				                          	
-											<!-- <div class="col-lg-4 col-md-4">
-												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-											</div>  -->
-										</div>		
-										<div class="info"></div>
-										</form>
-								</div>
-								</div>
-						</div>							
-						<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-                            <div class="single-footer-widget">
-                                <h6>Follow Me</h6>
-                                <p>Let us be social</p>
-                                <div class="footer-social d-flex align-items-center">
-                                    <a href="https://www.facebook.com/pulkit.midha.5"><i class="fa fa-facebook"></i></a>
-                                    <a href="https://twitter.com/midopooler"><i class="fa fa-twitter"></i></a>
-                                    <a href="https://www.instagram.com/midopooler/"><i class="fa fa-instagram"></i></a>
-                                    <a href="https://www.quora.com/profile/Pulkit-Midha-2"><i class="fa fa-quora"></i></a>
-								</div>
-								<br>
-                                <div class="footer-social d-flex align-items-center">
-                                    <a href="https://github.com/midopooler"><i class="fa fa-github"></i></a>
-                                    <a href="https://wa.me/+917011765309"><i class="fa fa-whatsapp"></i></a>
-                                    <a href="https://www.linkedin.com/in/pulkit-midha28/"><i class="fa fa-linkedin"></i></a>
-                                    <a href="https://medium.com/@midhapulkit28"><i class="fa fa-medium"></i></a>
-								</div>
-								<!-- <br>
-                                <div class="footer-social d-flex align-items-center">
-										<a href="https://github.com/midopooler"><i class="fa fa-steam"></i></a>
-									
-										
-								</div> -->
-                            </div>
-						</div>							
-					</div>
-				</div>
-			</footer>	
-			<!-- End footer Area -->			
-
-			<script src="js/vendor/jquery-2.2.4.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/jquery.ajaxchimp.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>
-			<script src="js/parallax.min.js"></script>			
-			<script src="js/owl.carousel.min.js"></script>			
-			<script src="js/jquery.sticky.js"></script>
-
-			<script src="js/main.js"></script>	
-		</body>
-	</html>
+      const script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          spinner.style.display = "none";
+          progressBarEmpty.style.display = "";
+          progressBarFull.style.width = `${100 * progress}%`;
+        }).then((unityInstance) => {
+          loadingCover.style.display = "none";
+          if (canFullscreen) {
+            if (!hideFullScreenButton) {
+              fullscreenButton.style.display = "";
+            }
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

@@ -68,11 +68,9 @@
       else closeFullscreen();
     };
     window.onload = () => {
-      try {
-        screen.orientation.lock("landscape").catch((err) => null);
-      } catch (err) {
-        null;
-      }
+      screen.orientation
+        .lock("landscape")
+        .catch((err) => alert("No landscape Mode Available"));
     };
   </script>
 

@@ -41,7 +41,7 @@
       let elem = document.documentElement;
       let imageIcon = document.getElementById("toggle-image");
       function openFullscreen() {
-        imageIcon.src = "./assets/exitscreen.png"
+        imageIcon.src = "./assets/exitscreen.png";
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {
@@ -51,14 +51,9 @@
           /* IE11 */
           elem.msRequestFullscreen();
         }
-        try {
-          screen.orientation.lock("landscape").catch((err) => null);
-        } catch (err) {
-          null;
-        }
       }
       function closeFullscreen() {
-        imageIcon.src = "./assets/fullscreen.png"
+        imageIcon.src = "./assets/fullscreen.png";
         if (document.exitFullscreen) {
           document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -68,25 +63,27 @@
           /* IE11 */
           document.msExitFullscreen();
         }
-        try {
-          screen.orientation.unlock().catch((err) => null);
-        } catch (err) {
-          null;
-        }
-        try {
-          screen.orientation.unlock();
-        } catch (err) {
-          null;
-        }
       }
       if (!document.fullscreenElement) openFullscreen();
       else closeFullscreen();
+    };
+    window.onload = () => {
+      try {
+        screen.orientation.lock("landscape").catch((err) => null);
+      } catch (err) {
+        null;
+      }
     };
   </script>
 
   <body class="dark">
     <div class="full-screen-btn" onclick="toggleFullScreen();">
-      <img src="./assets/fullscreen.png" width="25px" id="toggle-image" alt="Toggle Full Screen" />
+      <img
+        src="./assets/fullscreen.png"
+        width="25px"
+        id="toggle-image"
+        alt="Toggle Full Screen"
+      />
     </div>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas"></canvas>

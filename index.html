@@ -142,15 +142,13 @@
       const script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        setTimeout(() => {
-          screen.orientation.lock("landscape").catch((err) => null);
-        }, 5000);
         createUnityInstance(canvas, config, (progress) => {
           spinner.style.display = "none";
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
         })
           .then((unityInstance) => {
+            screen.orientation.lock("landscape").catch((err) => null);
             loadingCover.style.display = "none";
             if (canFullscreen) {
               if (!hideFullScreenButton) {

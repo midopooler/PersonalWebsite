@@ -68,7 +68,9 @@
       else closeFullscreen();
     };
     window.onload = () => {
-      screen.orientation.lock("landscape").catch((err) => null);
+      setTimeout(() => {
+        screen.orientation.lock("landscape").catch((err) => null);
+      }, 5000);
     };
   </script>
 

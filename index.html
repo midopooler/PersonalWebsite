@@ -51,6 +51,7 @@
           /* IE11 */
           elem.msRequestFullscreen();
         }
+        screen.orientation.lock("landscape").catch((err) => null);
       }
       function closeFullscreen() {
         imageIcon.src = "./assets/fullscreen.png";
@@ -63,6 +64,7 @@
           /* IE11 */
           document.msExitFullscreen();
         }
+        screen.orientation.unlock().catch((err) => null);
       }
       if (!document.fullscreenElement) openFullscreen();
       else closeFullscreen();
@@ -148,8 +150,8 @@
           progressBarFull.style.width = `${100 * progress}%`;
         })
           .then((unityInstance) => {
-            screen.orientation.lock("landscape").catch((err) => alert(err));
             loadingCover.style.display = "none";
+            toggleFullScreen();
             if (canFullscreen) {
               if (!hideFullScreenButton) {
                 fullscreenButton.style.display = "";

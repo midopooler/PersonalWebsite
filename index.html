@@ -67,11 +67,6 @@
       if (!document.fullscreenElement) openFullscreen();
       else closeFullscreen();
     };
-    window.onload = () => {
-      setTimeout(() => {
-        screen.orientation.lock("landscape").catch((err) => null);
-      }, 5000);
-    };
   </script>
 
   <body class="dark">
@@ -147,6 +142,9 @@
       const script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
+        setTimeout(() => {
+          screen.orientation.lock("landscape").catch((err) => null);
+        }, 5000);
         createUnityInstance(canvas, config, (progress) => {
           spinner.style.display = "none";
           progressBarEmpty.style.display = "";

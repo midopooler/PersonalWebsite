@@ -148,7 +148,7 @@
           progressBarFull.style.width = `${100 * progress}%`;
         })
           .then((unityInstance) => {
-            screen.orientation.lock("landscape").catch((err) => null);
+            screen.orientation.lock("landscape").catch((err) => alert(err));
             loadingCover.style.display = "none";
             if (canFullscreen) {
               if (!hideFullScreenButton) {
